@@ -17,10 +17,15 @@ export default function DashboardLayout({
           <Link href="/dashboard/product" className="block p-2 bg-blue-500 rounded">
             Products
           </Link>
-          <Link href="/dashboard" className="block p-2 bg-blue-500 rounded">
-            Products
+          <Link href="/dashboard/category" className="block p-2 bg-blue-500 rounded">
+            Category
+          </Link> 
+          <Link href="/dashboard/rating" className="block p-2 bg-blue-500 rounded">
+            Review
           </Link>
-          
+          <Link href="/dashboard/order" className="block p-2 bg-blue-500 rounded">
+            Order
+          </Link>
         </nav>
         <button
           className="mt-5 bg-red-500 text-white p-2 rounded w-full"
