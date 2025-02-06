@@ -28,7 +28,7 @@ export default function Dashboard(){
         fetchData();
       }, []);
     return <div>
-     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4">
+     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
       <Link href="/card1" className="bg-blue-500 text-white p-4 rounded-lg">
       <p>Total Orders: {totalOrders}</p> 
       </Link>
