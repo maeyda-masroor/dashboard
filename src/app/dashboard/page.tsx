@@ -2,6 +2,7 @@
 import Link from "next/link"
 import { useState ,useEffect } from "react";
 import { client } from "../../../sanity/lib/client";
+import StockLevel from '../../components/StockLevel'
 export default function Dashboard(){
     const [totalOrders, setTotalOrders] = useState(0);
     const [totalReviews, setTotalReviews] = useState(0);
@@ -27,8 +28,8 @@ export default function Dashboard(){
     
         fetchData();
       }, []);
-    return <div>
-     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+    return <div className="mt-10">
+     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-10">
       <Link href="/card1" className="bg-blue-500 text-white p-4 rounded-lg">
       <p>Total Orders: {totalOrders}</p> 
       </Link>
@@ -41,12 +42,15 @@ export default function Dashboard(){
       <Link href="/card4" className="bg-purple-500 text-white p-4 rounded-lg">
         <p>Total Product:{totalProduct}</p>
       </Link>
-      <Link href="/card5" className="bg-pink-500 text-white p-4 rounded-lg">
-        Card 5
+      </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-2 gap-4 mt-10">
+      <Link href="/card5" className=" text-white p-4 rounded-lg">
+        <p className="text-black">Total stock level</p>
+        <StockLevel/>
       </Link>
       <Link href="/card6" className="bg-indigo-500 text-white p-4 rounded-lg">
         Card 6
       </Link>
-    </div>
+      </div>
     </div>
 }
