@@ -40,7 +40,7 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
+    <div className="flex items-center justify-center min-h-screen bg-violet">
       <div className="w-full max-w-md bg-white p-6 rounded-lg shadow-lg text-black">
         <h2 className="text-3xl font-semibold text-center mb-4 text-black">Login</h2>
         <form onSubmit={handleSubmit} className="space-y-4">
@@ -78,7 +78,7 @@ export default function LoginPage() {
           {/* Submit Button */}
           <button
             type="submit"
-            className="w-full bg-blue-500 text-white py-2 rounded"
+            className="w-full bg-violet text-white py-2 rounded"
           >
             Login
           </button>

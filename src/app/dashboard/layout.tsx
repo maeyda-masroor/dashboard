@@ -11,7 +11,7 @@ export default function DashboardLayout({
   return (
     <div className="flex min-h-screen bg-gray-100">
       {/* Sidebar */}
-      <aside className="w-64 bg-blue-600 text-white p-5">
+      <aside className="w-64 bg-violet text-white p-5">
         <h2 className="text-xl font-bold mb-5">Dashboard</h2>
         <nav className="space-y-3">
           <Link href="/dashboard/product" className="block p-2 bg-blue-500 rounded">
@@ -28,7 +28,7 @@ export default function DashboardLayout({
           </Link>
         </nav>
         <button
-          className="mt-5 bg-red-500 text-white p-2 rounded w-full"
+          className="mt-5 bg-pink text-white p-2 rounded w-full"
         >
           Logout
         </button>
