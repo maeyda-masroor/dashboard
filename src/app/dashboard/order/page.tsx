@@ -26,6 +26,21 @@ export default function Dashboard() {
     );
   };
   
+  const handleDeleteOrder = async (orderId: string) => {
+    if (!window.confirm("Are you sure you want to delete this order?")) return;
+  
+    try {
+      await client.delete(orderId); // Delete from Sanity
+  
+      // Update local state to remove deleted order
+      setProduct((prevOrders) => prevOrders.filter((order) => order._id !== orderId));
+  
+      alert("Order deleted successfully!");
+    } catch (error) {
+      console.error("Error deleting order:", error);
+      alert("Failed to delete order.");
+    }
+  };
   
   return (
     <div>
@@ -65,6 +80,14 @@ export default function Dashboard() {
                   Edit
                 </button>
               </td>
+              <td className="border p-2">
+              <button
+                className="px-3 py-1 bg-red-500 text-white rounded"
+                onClick={() => handleDeleteOrder(product._id)}
+              >
+                Delete
+              </button>
+            </td>
             </tr>
           ))}
         </tbody>
