@@ -3,20 +3,30 @@ import { useEffect, useState } from "react";
 import { client } from "../../../../sanity/lib/client";
 import Image from "next/image";
 import { urlFor } from "../../../../sanity/lib/image";
+import EditOrderModal from "../../../components/EditOrder";
 
 export default function Dashboard() {
   const [products1, setProduct] = useState<any[]>([]);
 
   useEffect(() => {
     const fetchProducts = async () => {
-      const query = `*[_type == "order"]{_id, customerName, customerEmail, customerAddress}`;
+      const query = `*[_type == "order"]{ _id, customerName, customerEmail, customerAddress}`;
       const data = await client.fetch(query);
       setProduct(data);
     };
 
     fetchProducts();
   }, []);
-
+  const [selectedOrder, setSelectedOrder] = useState(null);
+  const handleUpdateOrder = (updatedOrder: any) => {
+    setProduct((prevProducts) =>
+      prevProducts.map((order) =>
+        order._id === updatedOrder._id ? { ...order, ...updatedOrder } : order
+      )
+    );
+  };
+  
+  
   return (
     <div>
       <h1 className="text-2xl font-bold mb-4">Products</h1>
@@ -47,10 +57,25 @@ export default function Dashboard() {
               <td className="border p-2">{product.customerName}</td>
               <td className="border p-2">{product.customerEmail}</td>
               <td className="border p-2">{product.customerAddress}</td>
+              <td className="border p-2">
+                <button
+                  className="px-3 py-1 bg-blue-500 text-white rounded"
+                  onClick={() => setSelectedOrder(product)}
+                >
+                  Edit
+                </button>
+              </td>
             </tr>
           ))}
         </tbody>
       </table>
+      {selectedOrder && (
+        <EditOrderModal
+          order={selectedOrder}
+          onClose={() => setSelectedOrder(null)}
+          onUpdate={handleUpdateOrder}
+        />
+      )}
     </div>
   );
 }
