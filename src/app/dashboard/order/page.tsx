@@ -9,7 +9,7 @@ export default function Dashboard() {
 
   useEffect(() => {
     const fetchProducts = async () => {
-      const query = `*[_type == "order"]{_id, name, email, address, image}`;
+      const query = `*[_type == "order"]{_id, customerName, customerEmail, customerAddress}`;
       const data = await client.fetch(query);
       setProduct(data);
     };
@@ -44,9 +44,9 @@ export default function Dashboard() {
                         <p>No image available</p>
                       )}
               </td>
-              <td className="border p-2">{product.name}</td>
-              <td className="border p-2">{product.email}</td>
-              <td className="border p-2">{product.address}</td>
+              <td className="border p-2">{product.customerName}</td>
+              <td className="border p-2">{product.customerEmail}</td>
+              <td className="border p-2">{product.customerAddress}</td>
             </tr>
           ))}
         </tbody>
